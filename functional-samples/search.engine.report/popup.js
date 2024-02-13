@@ -18,6 +18,14 @@
            message = (`no canonical link: ${document.body}`);
        }
        document.body.append(message);
+
+       chrome.runtime.sendMessage({
+           message: "getdata"
+       }, (response) => {
+           // do sth here if you want
+           console.log(response);
+       });
+
        // chrome.extension.getBackgroundPage().console.log('bar');
        //We have permission to access the activeTab, so we can call chrome.tabs.executeScript:
        /*
@@ -29,14 +37,14 @@
        });
        */
    });
-
-   chrome.action.onClicked.addListener((tab) => {
-       if (!tab.url.includes('chrome://')) {
-           chrome.scripting.executeScript({
-               target: {
-                   tabId: tab.id
-               },
-               files: ['content.js']
-           });
-       }
-   });
+   //
+   //   chrome.action.onClicked.addListener((tab) => {
+   //       if (!tab.url.includes('chrome://')) {
+   //           chrome.scripting.executeScript({
+   //               target: {
+   //                   tabId: tab.id
+   //               },
+   //               files: ['content.js']
+   //           });
+   //       }
+   //   });
