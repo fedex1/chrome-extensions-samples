@@ -1,27 +1,36 @@
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg.message === "getdata") {
-    chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ["content.js"],
-      });
-    });
-  }
-  return true;
+    if (msg.message === "getdata") {
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, ([tab]) => {
+            if (!tab.url.includes('chrome://')) {
+                chrome.scripting.executeScript({
+                    target: {
+                        tabId: tab.id
+                    },
+                    files: ["content.js"],
+                });
+            }
+        });
+    }
+    return true;
 });
 
 
 function reddenPage() {
-  document.body.style.backgroundColor = 'red';
+    document.body.style.backgroundColor = 'red';
 }
 
 chrome.action.onClicked.addListener((tab) => {
-  if (!tab.url.includes('chrome://')) {
-    chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      func: reddenPage
-    });
-  }
+    if (!tab.url.includes('chrome://')) {
+        chrome.scripting.executeScript({
+            target: {
+                tabId: tab.id
+            },
+            func: reddenPage
+        });
+    }
 });
 
 // try{
@@ -41,5 +50,5 @@ chrome.action.onClicked.addListener((tab) => {
 */
 
 // }catch(e){
-  // console.log(e);
+// console.log(e);
 // }

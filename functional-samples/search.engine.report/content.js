@@ -3,4 +3,13 @@
         } else {
             message = (`no canonical link: ${document.body}`);
         }
-        alert(message);
+        // alert(message);
+
+       chrome.runtime.sendMessage({
+           message: "senddata",
+           payload: message
+       }, (response) => {
+           // do sth here if you want
+           console.log(response);
+       });
+
