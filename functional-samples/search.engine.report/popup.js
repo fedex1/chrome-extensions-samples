@@ -7,7 +7,8 @@
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.message === "senddata") {
     alert(`INFO payload ${msg.payload}`);
-       document.body.append(`<div>${msg.payload}</div>`);
+       // document.body.append(`<div>${msg.payload}</div>`);
+       document.querySelector("#report").innerHTML=`<div>${msg.payload}</div>`;
   }
   return true;
 });
@@ -25,7 +26,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
            // alert(`no canonical link: ${document.body}`);
            message = (`no canonical link: ${document.body}`);
        }
-       document.body.append(message);
+       // document.body.append(message);
 
        chrome.runtime.sendMessage({
            message: "getdata"
