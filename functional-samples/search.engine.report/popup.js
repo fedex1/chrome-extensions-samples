@@ -4,14 +4,14 @@
        console.log(document.body);
        return document.body.innerHTML;
    }
-chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if (msg.message === "senddata") {
-    alert(`INFO payload ${msg.payload}`);
-       // document.body.append(`<div>${msg.payload}</div>`);
-       document.querySelector("#report").innerHTML=`<div>${msg.payload}</div>`;
-  }
-  return true;
-});
+   chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+       if (msg.message === "senddata") {
+           // alert(`INFO payload ${msg.payload}`);
+           // document.body.append(`<div>${msg.payload}</div>`);
+           document.querySelector("#report").innerHTML = `<div>${msg.payload}</div>`;
+       }
+       return true;
+   });
 
 
    document.addEventListener('DOMContentLoaded', function() {
