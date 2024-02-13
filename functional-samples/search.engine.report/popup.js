@@ -9,8 +9,8 @@
            // alert(`INFO payload ${msg.payload}`);
            // document.body.append(`<div>${msg.payload}</div>`);
            document.querySelector("#report").innerHTML = 
-           `<a href="${msg.payload}" target="_blank">${msg.payload}</a>` +
-           `<br><a href="https://prop.tidalforce.org/seo/site:youtube.com" target="_blank">More Search Engine Report Page Tools</a>`;
+           `<br><a href="${msg.payload}" target="_blank">${msg.payload}</a>` +
+           `<br><br><a href="https://prop.tidalforce.org/seo/site:youtube.com" target="_blank">More Search Engine Report Page Tools</a>`;
        }
        return true;
    });
