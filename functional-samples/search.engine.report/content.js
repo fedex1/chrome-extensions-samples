@@ -7,7 +7,8 @@
 
        chrome.runtime.sendMessage({
            message: "senddata",
-           payload: message
+           payload: message,
+           location: location.hostname,
        }, (response) => {
            // do sth here if you want
            console.log(response);
